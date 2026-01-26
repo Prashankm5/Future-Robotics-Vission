@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perception–Logic–Control Robotics Research Vision</title>
+  <style>
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      margin: 0;
+      background: #FDF6E3;
+      color: #2C1810;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      background: linear-gradient(135deg, #D4A574, #B89778);
+      padding: 50px 20px;
+      text-align: center;
+      color: #1A0D00;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+    header p {
+      margin-top: 12px;
+      font-size: 1.2rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 30px;
+      background: white;
+      box-shadow: 0 0 30px rgba(0,0,0,0.08);
+    }
+    section {
+      margin-bottom: 50px;
+      page-break-inside: avoid;
+    }
+    h2 {
+      color: #8B4513;
+      font-size: 1.6rem;
+      font-weight: 400;
+      border-bottom: 2px solid #D4A574;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+    h3 {
+      color: #A0522D;
+      font-size: 1.3rem;
+      margin-top: 30px;
+      font-style: italic;
+    }
+    ul {
+      padding-left: 25px;
+    }
+    li {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+    .box {
+      background: #FFF8F0;
+      border-left: 5px solid #D4A574;
+      padding: 20px 25px;
+      margin-top: 20px;
+      border-radius: 0;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+      font-style: italic;
+    }
+    code {
+      background: #F5F5F5;
+      padding: 4px 8px;
+      border: 1px solid #E0E0E0;
+      border-radius: 3px;
+      color: #2C1810;
+      font-family: "Courier New", monospace;
+      font-size: 0.95em;
+    }
+    ol {
+      padding-left: 30px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #F8F1E9;
+      font-size: 0.95rem;
+      color: #5D4037;
+      border-top: 1px solid #E0D4C4;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Perception–Logic–Control Based Robotic Systems</h1>
+  <p>Research Vision | Safe Autonomy | Robotics & AI Systems</p>
+</header>
+<main>
+  <section>
+    <h2>1. Long-Term Research Vision</h2>
+    <p>
+      The long-term goal is to develop expertise and leadership in designing
+      <strong>safe, explainable, and robust robotic systems</strong> for real-world
+      service and human-interaction scenarios across
+      <strong>ground and marine robotic platforms</strong>,
+      including <strong>Unmanned Surface Vehicles (USVs)</strong>.
+    </p>
+    <p>
+      Higher studies (MTech / MTech by Research / PhD) are viewed as a
+      <strong>capability-building and validation phase</strong> to establish strong
+      foundations in perception, control, autonomous decision-making,
+      kinematics, and dynamics.
+    </p>
+    <p>
+      A particular interest lies in <strong>unmanned surface vehicles (ground/marine)</strong>,
+      where reliable perception and safety-aware control are essential under real-world uncertainty.
+      Prior experience in acoustic and vibro-acoustic sensing is viewed as a complementary strength for marine scenarios, where vision alone is often insufficient.
+    </p>
+  </section>
+  <section>
+    <h2>2. Core Engineering Philosophy</h2>
+    <div class="box">
+      Robotic intelligence should be built as a structured hierarchy:
+      <strong>Perception → Logic → Control</strong>.
+      Learning-based methods are introduced only after deterministic perception,
+      decision logic, and safety constraints are clearly defined.
+      End-to-end black-box AI is deliberately avoided to ensure
+      <strong>interpretability, stability, and safety</strong>.
+    </div>
+  </section>
+  <section>
+    <h2>3. High-Level System Architecture</h2>
+    <div class="box">
+      <strong>Physical World</strong> → Perception → Logic (FSM) → Control → Actuation
+    </div>
+  </section>
+  <section>
+    <h2>4. Perception Layer (Structured Representation)</h2>
+    <p>
+      Raw sensor data is converted into explicit, interpretable variables.
+      Perception does not make decisions; it only provides reliable facts
+      with confidence estimates.
+    </p>
+    <div class="box">
+      <strong>Example perception outputs (pseudo-code):</strong><br><br>
+      <code>human_present</code>: True / False<br>
+      <code>distance_to_human</code>: value (cm)<br>
+      <code>attention_state</code>: looking / not_looking / unknown<br>
+      <code>motion_state</code>: static / slow / fast<br>
+      <code>confidence_score</code>: 0 – 1
+    </div>
+    <h3>Key Skills</h3>
+    <ul>
+      <li>Python & NumPy (images and signals as matrices)</li>
+      <li>OpenCV fundamentals and classical computer vision</li>
+      <li>Human detection (Haar cascades, MediaPipe)</li>
+      <li>Camera geometry & distance estimation</li>
+      <li>Head pose and attention estimation</li>
+      <li>Acoustic & vibro-acoustic signal interpretation (marine context)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>5. Logic Layer – Finite State Machines</h2>
+    <p>
+      High-level behavior is governed by deterministic logic using FSMs,
+      ensuring predictable and explainable robot actions.
+    </p>
+    <ul>
+      <li><strong>IDLE</strong> – monitoring state</li>
+      <li><strong>AWARE</strong> – human or event detected</li>
+      <li><strong>ENGAGED</strong> – safe interaction allowed</li>
+      <li><strong>SAFE MODE</strong> – uncertainty, fault, or low confidence</li>
+    </ul>
+  </section>
+  <section>
+    <h2>6. Control & State Estimation (Core Strength)</h2>
+    <ul>
+      <li>Signal processing (time and frequency domain)</li>
+      <li>State-space modeling of coupled systems</li>
+      <li>Kalman Filter family (KF / EKF / UKF)</li>
+      <li>Classical control (PID, stability intuition)</li>
+      <li>Modern control (LQR / LQG)</li>
+      <li>Adaptive control (LMS / FXLMS)</li>
+    </ul>
+    <div class="box">
+      Prior experience with <strong>FXLMS-based adaptive control</strong>
+      provides strong intuition in closed-loop stability,
+      disturbance rejection, and real-time implementation —
+      directly relevant to robotics, marine systems, and safety-critical autonomy.
+    </div>
+  </section>
+  <section>
+    <h2>7. Learning-Based Methods (Supporting Role)</h2>
+    <ul>
+      <li>Deep Learning for perception modules (selective use)</li>
+      <li>Reinforcement Learning for policy optimization in simulation</li>
+    </ul>
+  </section>
+  <section>
+    <h2>8. Software, Tools & Simulation Stack</h2>
+    <ul>
+      <li>ROS2 for modular system integration</li>
+      <li>Gazebo / Ignition Gazebo for physics-based simulation</li>
+      <li>MATLAB / Simulink and Python for modeling and validation</li>
+      <li>CAD tools (SolidWorks / Fusion 360) for basic robot structures</li>
+      <li>Comsol/Ansys for Simulation</li>
+      <li>3D printing for rapid prototyping (supporting role)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>9. Suitable Learning Order</h2>
+    <ol>
+      <li>Python & NumPy</li>
+      <li>MATLAB for modeling and simulation</li>
+      <li>Signal processing fundamentals</li>
+      <li>OpenCV & classical computer vision</li>
+      <li>Camera geometry & perception reliability</li>
+      <li>Kalman filtering & state estimation</li>
+      <li>Finite State Machines & safety logic</li>
+      <li>Classical and modern control</li>
+      <li>Adaptive control (FXLMS)</li>
+      <li>ROS2 integration</li>
+      <li>Gazebo-based simulation</li>
+      <li>Basic CAD & 3D printing (supporting)</li>
+      <li>Deep Learning for perception</li>
+      <li>Reinforcement Learning</li>
+    </ol>
+  </section>
+</main>
+<footer>
+  Research Vision Document | Robotics & AI Systems | Future Intative Vision
+</footer>
+</body>
+</html>
