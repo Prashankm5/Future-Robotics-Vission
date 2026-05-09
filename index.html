@@ -1,240 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Perception–Logic–Control Robotics Research Vision</title>
+
+  <title>Perception–Logic–Control Based Autonomous Robotic Systems</title>
+
   <style>
-    body {
-      font-family: "Georgia", "Times New Roman", serif;
-      margin: 0;
-      background: #FDF6E3;
-      color: #2C1810;
-      line-height: 1.8;
-      font-size: 16px;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
-    header {
-      background: linear-gradient(135deg, #D4A574, #B89778);
-      padding: 50px 20px;
-      text-align: center;
-      color: #1A0D00;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    body{
+      font-family:"Georgia","Times New Roman",serif;
+      background:#FDF8F2;
+      color:#2B1B12;
+      line-height:1.85;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.4rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
+
+    header{
+      background:linear-gradient(135deg,#D8A56D,#B88A5A);
+      color:#1A0D00;
+      padding:80px 20px;
+      text-align:center;
+      box-shadow:0 4px 20px rgba(0,0,0,0.12);
     }
-    header p {
-      margin-top: 12px;
-      font-size: 1.2rem;
-      font-style: italic;
-      opacity: 0.9;
+
+    header h1{
+      font-size:2.7rem;
+      font-weight:500;
+      margin-bottom:18px;
+      letter-spacing:0.5px;
     }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 30px;
-      background: white;
-      box-shadow: 0 0 30px rgba(0,0,0,0.08);
+
+    .subtitle-wrapper{
+      display:flex;
+      justify-content:center;
+      width:100%;
     }
-    section {
-      margin-bottom: 50px;
-      page-break-inside: avoid;
+
+    .subtitle{
+      text-align:center;
+      max-width:900px;
+      font-size:1.18rem;
+      font-style:italic;
+      opacity:0.95;
     }
-    h2 {
-      color: #8B4513;
-      font-size: 1.6rem;
-      font-weight: 400;
-      border-bottom: 2px solid #D4A574;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
+
+    main{
+      max-width:1000px;
+      margin:auto;
+      background:white;
+      padding:65px 35px;
+      box-shadow:0 0 28px rgba(0,0,0,0.08);
     }
-    h3 {
-      color: #A0522D;
-      font-size: 1.3rem;
-      margin-top: 30px;
-      font-style: italic;
+
+    section{
+      margin-bottom:65px;
     }
-    ul {
-      padding-left: 25px;
+
+    h2{
+      color:#8B4513;
+      font-size:1.75rem;
+      margin-bottom:22px;
+      border-bottom:2px solid #D8A56D;
+      padding-bottom:10px;
+      font-weight:500;
     }
-    li {
-      margin-bottom: 12px;
-      text-align: justify;
+
+    h3{
+      color:#A0522D;
+      margin-top:32px;
+      margin-bottom:16px;
+      font-size:1.3rem;
+      font-style:italic;
     }
-    .box {
-      background: #FFF8F0;
-      border-left: 5px solid #D4A574;
-      padding: 20px 25px;
-      margin-top: 20px;
-      border-radius: 0;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
-      font-style: italic;
+
+    p{
+      margin-bottom:18px;
+      text-align:justify;
     }
-    code {
-      background: #F5F5F5;
-      padding: 4px 8px;
-      border: 1px solid #E0E0E0;
-      border-radius: 3px;
-      color: #2C1810;
-      font-family: "Courier New", monospace;
-      font-size: 0.95em;
+
+    strong{
+      color:#5C2E00;
     }
-    ol {
-      padding-left: 30px;
+
+    ul{
+      padding-left:26px;
     }
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #F8F1E9;
-      font-size: 0.95rem;
-      color: #5D4037;
-      border-top: 1px solid #E0D4C4;
-      margin-top: 50px;
+
+    li{
+      margin-bottom:13px;
     }
+
+    .box{
+      background:#FFF7EE;
+      border-left:5px solid #D8A56D;
+      padding:24px;
+      margin-top:22px;
+      margin-bottom:22px;
+      box-shadow:inset 0 2px 4px rgba(0,0,0,0.03);
+    }
+
+    .flow{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
+      margin-top:28px;
+      margin-bottom:28px;
+    }
+
+    .flow div{
+      background:#FFF7EE;
+      border:1px solid #D8A56D;
+      padding:14px 18px;
+      border-radius:8px;
+      font-weight:600;
+      transition:0.3s ease;
+    }
+
+    .flow div:hover{
+      transform:translateY(-4px);
+      background:#F8E8D5;
+    }
+
+    .arrow{
+      font-size:1.2rem;
+      color:#8B4513;
+      align-self:center;
+    }
+
+    .code-box{
+  margin-bottom:4px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  }
+
+  .code-label{
+    background:#F3EEE8;
+    border:1px solid #D8C7B5;
+    padding:3px 8px;
+    border-radius:6px;
+    font-family:"Courier New",monospace;
+    font-size:0.95rem;
+    display:inline-block;
+    min-width:210px;
+    line-height:1.2;
+  }
+
+  .code-value{
+    margin-left:8px;
+    font-weight:600;
+    font-size:0.98rem;
+    line-height:1.2;
+  }
+
+    footer{
+      text-align:center;
+      padding:35px;
+      background:#F6EFE7;
+      color:#5D4037;
+      margin-top:60px;
+      border-top:1px solid #DDD;
+    }
+
   </style>
 </head>
+
 <body>
+
 <header>
-  <h1>Perception–Logic–Control Based Robotic Systems</h1>
-  <p>Research Vision | Safe Autonomy | Robotics & AI Systems</p>
+
+  <h1>
+    Perception–Logic–Control Based Autonomous Robotic Systems
+  </h1>
+
+  <div class="subtitle-wrapper">
+    <p class="subtitle">
+      Engineering Ambition | Physical AI | Intelligent Robotic Systems
+    </p>
+  </div>
+
 </header>
+
 <main>
-  <section>
-    <h2>1. Long-Term Research Vision</h2>
-    <p>
-      The long-term goal is to develop expertise and leadership in designing
-      <strong>safe, explainable, and robust robotic systems</strong> for real-world
-      service and human-interaction scenarios across
-      <strong>ground and marine robotic platforms</strong>,
-      including <strong>Unmanned Surface Vehicles (USVs)</strong>.
-    </p>
-    <p>
-      Higher studies (MTech / MTech by Research / PhD) are viewed as a
-      <strong>capability-building and validation phase</strong> to establish strong
-      foundations in perception, control, autonomous decision-making,
-      kinematics, and dynamics.
-    </p>
-    <p>
-      A particular interest lies in <strong>unmanned surface vehicles (ground/marine)</strong>,
-      where reliable perception and safety-aware control are essential under real-world uncertainty.
-      Prior experience in acoustic and vibro-acoustic sensing is viewed as a complementary strength for marine scenarios, where vision alone is often insufficient.
-    </p>
-  </section>
-  <section>
-    <h2>2. Core Engineering Philosophy</h2>
-    <div class="box">
-      Robotic intelligence should be built as a structured hierarchy:
-      <strong>Perception → Logic → Control</strong>.
-      Learning-based methods are introduced only after deterministic perception,
-      decision logic, and safety constraints are clearly defined.
-      End-to-end black-box AI is deliberately avoided to ensure
-      <strong>interpretability, stability, and safety</strong>.
+    <section>
+
+  <h2>1. Long-Term Engineering Ambition</h2>
+
+  <p>
+    The long-term goal is to develop expertise and leadership in designing
+    <strong>
+      safe, reliable, and intelligent autonomous robotic systems
+    </strong>
+    capable of operating across aerial, ground, and marine environments
+    under real-world uncertainty.
+  </p>
+
+  <p>
+    Higher studies (MTech / MS by Research / PhD) are viewed as a
+    <strong>capability-building and system-engineering phase</strong>
+    for strengthening foundations in robotics, perception,
+    autonomous systems, control, and intelligent decision architectures.
+  </p>
+
+  <p>
+    A central engineering interest lies in understanding how different sensing
+    methodologies complement each other across environments.
+    In aerial and ground robotics,
+    <strong>vision alone is often insufficient</strong>,
+    where LiDAR-based spatial perception improves environmental understanding.
+    Similarly, in marine scenarios,
+    prior experience in
+    <strong>acoustic and vibro-acoustic systems</strong>
+    is viewed as a complementary strength where conventional vision-based perception may become unreliable.
+  </p>
+
+  <p>
+    Current experience in
+    <strong>
+      FEM, structural dynamics,
+      adaptive control,
+      UAV-LiDAR systems,
+      point cloud processing,
+      and intelligent sensing
+    </strong>
+    is viewed as capability-building toward future
+    <strong>multi-domain physical AI systems</strong>
+    where perception, logic, AI, and control operate together as a unified engineering system.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>2. Core Engineering Philosophy</h2>
+
+  <div class="box">
+
+    Most robotic failures do not occur because
+    a robot lacks features.
+
+    They occur because the robot fails in:
+    <strong>
+      sensing reliability,
+      decision consistency,
+      system understanding,
+      or safety-aware control
+    </strong>.
+
+    <br><br>
+
+    The engineering philosophy therefore emphasizes:
+
+    <strong>
+      Perception → Logic → AI/ML → Planning → Control → Reliable Physical Interaction
+    </strong>
+
+    where AI acts as an enabling layer
+    inside a stable and interpretable engineering system
+    rather than replacing the system architecture itself.
+
+  </div>
+
+  <p>
+    Theoretical research is respected
+    as the foundation of future technology,
+    while personal engineering interests are primarily centered around
+    the applied, implementation-oriented,
+    and system-integration aspects
+    of intelligent autonomous systems.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>3. System-Level Robotics Architecture</h2>
+
+  <div class="flow">
+
+    <div>Physical World</div>
+
+    <div class="arrow">→</div>
+
+    <div>Perception</div>
+
+    <div class="arrow">→</div>
+
+    <div>Logic & Safety</div>
+
+    <div class="arrow">→</div>
+
+    <div>AI/ML Decision Layer</div>
+
+    <div class="arrow">→</div>
+
+    <div>Planning</div>
+
+    <div class="arrow">→</div>
+
+    <div>Control</div>
+
+    <div class="arrow">→</div>
+
+    <div>Actuation</div>
+
+  </div>
+
+  <div class="box">
+
+    In intelligent robotic systems,
+    <strong>
+      low-level control,
+      safety architecture,
+      and deterministic logic
+    </strong>
+    are considered as important
+    as perception and AI capability,
+    since reliable behaviour depends on the
+    coordination and stability
+    of the complete system stack.
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>4. Perception & Environmental Understanding</h2>
+
+  <p>
+    Perception systems transform raw sensor data
+    into structured environmental understanding
+    for autonomous robotic systems.
+  </p>
+
+  <div class="box">
+
+    <strong style="font-size:1.2rem;">
+      Example perception outputs (pseudo-code):
+    </strong>
+
+    <br><br>
+
+    <div class="code-box">
+      <span class="code-label">human_present</span>
+      <span class="code-value">: True / False</span>
     </div>
-  </section>
-  <section>
-    <h2>3. High-Level System Architecture</h2>
-    <div class="box">
-      <strong>Physical World</strong> → Perception → Logic (FSM) → Control → Actuation
+
+    <div class="code-box">
+      <span class="code-label">distance_to_human</span>
+      <span class="code-value">: value (cm)</span>
     </div>
-  </section>
-  <section>
-    <h2>4. Perception Layer (Structured Representation)</h2>
-    <p>
-      Raw sensor data is converted into explicit, interpretable variables.
-      Perception does not make decisions; it only provides reliable facts
-      with confidence estimates.
-    </p>
-    <div class="box">
-      <strong>Example perception outputs (pseudo-code):</strong><br><br>
-      <code>human_present</code>: True / False<br>
-      <code>distance_to_human</code>: value (cm)<br>
-      <code>attention_state</code>: looking / not_looking / unknown<br>
-      <code>motion_state</code>: static / slow / fast<br>
-      <code>confidence_score</code>: 0 – 1
+
+    <div class="code-box">
+      <span class="code-label">attention_state</span>
+      <span class="code-value">
+        : looking / not_looking / unknown
+      </span>
     </div>
-    <h3>Key Skills</h3>
-    <ul>
-      <li>Python & NumPy (images and signals as matrices)</li>
-      <li>OpenCV fundamentals and classical computer vision</li>
-      <li>Human detection (Haar cascades, MediaPipe)</li>
-      <li>Camera geometry & distance estimation</li>
-      <li>Head pose and attention estimation</li>
-      <li>Acoustic & vibro-acoustic signal interpretation (marine context)</li>
-    </ul>
-  </section>
-  <section>
-    <h2>5. Logic Layer – Finite State Machines</h2>
-    <p>
-      High-level behavior is governed by deterministic logic using FSMs,
-      ensuring predictable and explainable robot actions.
-    </p>
-    <ul>
-      <li><strong>IDLE</strong> – monitoring state</li>
-      <li><strong>AWARE</strong> – human or event detected</li>
-      <li><strong>ENGAGED</strong> – safe interaction allowed</li>
-      <li><strong>SAFE MODE</strong> – uncertainty, fault, or low confidence</li>
-    </ul>
-  </section>
-  <section>
-    <h2>6. Control & State Estimation (Core Strength)</h2>
-    <ul>
-      <li>Signal processing (time and frequency domain)</li>
-      <li>State-space modeling of coupled systems</li>
-      <li>Kalman Filter family (KF / EKF / UKF)</li>
-      <li>Classical control (PID, stability intuition)</li>
-      <li>Modern control (LQR / LQG)</li>
-      <li>Adaptive control (LMS / FXLMS)</li>
-    </ul>
-    <div class="box">
-      Prior experience with <strong>FXLMS-based adaptive control</strong>
-      provides strong intuition in closed-loop stability,
-      disturbance rejection, and real-time implementation —
-      directly relevant to robotics, marine systems, and safety-critical autonomy.
+
+    <div class="code-box">
+      <span class="code-label">motion_state</span>
+      <span class="code-value">: static / slow / fast</span>
     </div>
-  </section>
-  <section>
-    <h2>7. Learning-Based Methods (Supporting Role)</h2>
-    <ul>
-      <li>Deep Learning for perception modules (selective use)</li>
-      <li>Reinforcement Learning for policy optimization in simulation</li>
-    </ul>
-  </section>
-  <section>
-    <h2>8. Software, Tools & Simulation Stack</h2>
-    <ul>
-      <li>ROS2 for modular system integration</li>
-      <li>Gazebo / Ignition Gazebo for physics-based simulation</li>
-      <li>MATLAB / Simulink and Python for modeling and validation</li>
-      <li>CAD tools (SolidWorks / Fusion 360) for basic robot structures</li>
-      <li>Comsol/Ansys for Simulation</li>
-      <li>3D printing for rapid prototyping (supporting role)</li>
-    </ul>
-  </section>
-  <section>
-    <h2>9. Suitable Learning Order</h2>
-    <ol>
-      <li>Python & NumPy</li>
-      <li>MATLAB for modeling and simulation</li>
-      <li>Signal processing fundamentals</li>
-      <li>OpenCV & classical computer vision</li>
-      <li>Camera geometry & perception reliability</li>
-      <li>Kalman filtering & state estimation</li>
-      <li>Finite State Machines & safety logic</li>
-      <li>Classical and modern control</li>
-      <li>Adaptive control (FXLMS)</li>
-      <li>ROS2 integration</li>
-      <li>Gazebo-based simulation</li>
-      <li>Basic CAD & 3D printing (supporting)</li>
-      <li>Deep Learning for perception</li>
-      <li>Reinforcement Learning</li>
-    </ol>
-  </section>
+
+    <div class="code-box">
+      <span class="code-label">confidence_score</span>
+      <span class="code-value">: 0 – 1</span>
+    </div>
+
+  </div>
+
+  <h3>Key Technical Skills</h3>
+
+  <ul>
+
+    <li>
+      <strong>LiDAR perception</strong>
+      and point cloud processing
+    </li>
+
+    <li>
+      <strong>Computer vision</strong>
+      and environmental understanding
+    </li>
+
+    <li>
+      <strong>Python & NumPy</strong>
+      for image and signal representation
+    </li>
+
+    <li>
+      <strong>OpenCV fundamentals</strong>
+      and classical computer vision
+    </li>
+
+    <li>
+      <strong>Human detection</strong>
+      using Haar cascades and MediaPipe
+    </li>
+
+    <li>
+      <strong>Camera geometry</strong>
+      and distance estimation
+    </li>
+
+    <li>
+      <strong>Head pose and attention estimation</strong>
+    </li>
+
+    <li>
+      <strong>Signal processing</strong>
+      and acoustic sensing
+    </li>
+
+    <li>
+      <strong>Physics-based system understanding</strong>
+      through FEM and structural dynamics
+    </li>
+
+  </ul>
+
+</section>
+
+<section>
+
+  <h2>5. Logic, Safety & Autonomous Behaviour</h2>
+
+  <p>
+
+    High-level robotic behavior is governed through
+    <strong>Finite State Machines (FSMs)</strong>
+    and safety-aware decision architectures
+    to ensure predictable,
+    interpretable,
+    and reliable system actions.
+
+    FSMs provide structured behavioural control
+    by defining how autonomous systems transition
+    between operational states
+    under different environmental conditions
+    and safety constraints.
+
+  </p>
+
+  <div class="box">
+
+    <strong>Example FSM States:</strong>
+
+    <br><br>
+
+    <strong>IDLE</strong>
+    – monitoring state
+
+    <br>
+
+    <strong>AWARE</strong>
+    – human or event detected
+
+    <br>
+
+    <strong>ENGAGED</strong>
+    – safe interaction allowed
+
+    <br>
+
+    <strong>SAFE MODE</strong>
+    – uncertainty, fault, or low confidence
+
+  </div>
+
+  <ul>
+
+    <li>Finite State Machines (FSM)</li>
+
+    <li>Safety-aware decision architecture</li>
+
+    <li>State estimation and probabilistic reasoning</li>
+
+    <li>Adaptive autonomous behaviour</li>
+
+    <li>Real-time response systems</li>
+
+  </ul>
+
+</section>
+
+
+
+<section>
+
+  <h2>6. Control, Dynamics & Physical Systems</h2>
+
+  <ul>
+
+    <li>
+      <strong>State-space modeling</strong>
+      of coupled systems
+    </li>
+
+    <li>
+      <strong>Structural dynamics</strong>
+      and FEM-based modeling
+    </li>
+
+    <li>
+      <strong>Signal processing</strong>
+      in time and frequency domains
+    </li>
+
+    <li>
+      <strong>Adaptive control systems</strong>
+      including LMS / FxLMS
+    </li>
+
+    <li>
+      <strong>Kalman Filter family</strong>
+      (KF / EKF / UKF)
+    </li>
+
+    <li>
+      <strong>Classical control</strong>
+      (PID and stability intuition)
+    </li>
+
+    <li>
+      <strong>Modern control</strong>
+      (LQR / LQG)
+    </li>
+
+    <li>
+      <strong>Disturbance rejection</strong>
+      and system stability
+    </li>
+
+    <li>
+      <strong>Physics-aware engineering understanding</strong>
+      for intelligent machines
+    </li>
+
+  </ul>
+
+  <div class="box">
+
+    Prior work in
+    <strong>
+      vibro-acoustic systems,
+      adaptive control,
+      FEM-based modeling,
+      and coupled dynamic systems
+    </strong>
+
+    contributes toward understanding
+    real-world system behaviour,
+    engineering reliability,
+    disturbance rejection,
+    and safe autonomous interaction.
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>7. AI & Intelligent Systems</h2>
+
+  <ul>
+
+    <li>
+      Machine learning for perception
+      and sensing systems
+    </li>
+
+    <li>
+      Deep learning for environmental understanding
+    </li>
+
+    <li>
+      AI-assisted decision support systems
+    </li>
+
+    <li>
+      Reinforcement learning for autonomous behaviour
+    </li>
+
+    <li>
+      Intelligent system integration for robotics
+    </li>
+
+  </ul>
+
+</section>
+
+
+
+<section>
+
+  <h2>8. Development & Simulation Stack</h2>
+
+  <ul>
+
+    <li>
+      <strong>ROS2</strong>
+      for robotics system integration
+    </li>
+
+    <li>
+      <strong>Gazebo / PyBullet</strong>
+      for robotics simulation
+    </li>
+
+    <li>
+      <strong>MATLAB & Python</strong>
+      for modeling and validation
+    </li>
+
+    <li>
+      <strong>COMSOL Multiphysics</strong>
+      for physics-based simulations
+    </li>
+
+    <li>
+      <strong>Fusion 360</strong>
+      for CAD and structural understanding
+    </li>
+
+    <li>
+      <strong>AI/ML libraries</strong>
+      including NumPy, OpenCV, and Scikit-Learn
+    </li>
+
+  </ul>
+
+</section>
+
+
+
+<section>
+
+  <h2>9. Future Engineering Direction</h2>
+
+  <ul>
+
+    <li>Multi-domain autonomous robotic systems</li>
+
+    <li>Embodied AI and intelligent physical systems</li>
+
+    <li>SLAM and autonomous navigation</li>
+
+    <li>Sensor fusion and reliable autonomy</li>
+
+    <li>Digital twins and intelligent infrastructure systems</li>
+
+    <li>Real-world deployable robotic platforms</li>
+
+  </ul>
+
+</section>
+
 </main>
+
+
+
 <footer>
-  Research Vision Document | Robotics & AI Systems | Future Intative Vision
+
+  Engineering Ambition Document | Robotics & AI Systems | Future Intative Vision
+
 </footer>
+
 </body>
 </html>
